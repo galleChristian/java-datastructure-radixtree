@@ -4,6 +4,7 @@ import java.util.TreeMap;
 
 /**
  * radix Trie implementation in Java
+ * 
  * @author galle.yi
  * @link yiyikai@126.com
  * @link 824564329@qq.com
@@ -307,6 +308,9 @@ public class RedblackRadixTrieMap {
 			return null;
 		}
 		String info = x.info;
+		if (info == null) {
+			return null;
+		}
 		delete(x);
 		return info;
 	}
@@ -380,8 +384,8 @@ public class RedblackRadixTrieMap {
 	 * @apiNote if x.parent is also word, x may has no sibling if x is word; if
 	 *          x.parent is not word, x must have at least one sibling;
 	 */
-	private static boolean mergeChildAfterDeletion(Node x) {
-		if (x.children.size() == 1) {
+	private boolean mergeChildAfterDeletion(Node x) {
+		if ((x != root) && (x.children.size() == 1)) {
 			Node pa = x.parent;
 			Node grdSon = x.children.firstEntry().getValue();
 			byte[] arr = append(x.indices, grdSon.indices);
@@ -454,13 +458,13 @@ public class RedblackRadixTrieMap {
 		// here we do not adopt linked list
 		// for saving space in respect to primitive type byte
 		byte[] indices;// variable length array; if null, is root
-		String info;// null is non-word; 
+		String info;// null is non-word;
 		String content;// just for debug
 
 		Node parent;
 
 		// HashMap 16-32 space waste
-		TreeMap<Byte, Node> children;//null or [1, 26]
+		TreeMap<Byte, Node> children;// null or [1, 26]
 
 		/**
 		 * just for newly creating root node
