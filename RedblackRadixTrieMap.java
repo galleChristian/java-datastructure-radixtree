@@ -380,7 +380,7 @@ public class RedblackRadixTrieMap {
 	/**
 	 * for instance delete "the" with only one child "their"
 	 * 
-	 * @param x
+	 * @param x not root
 	 * @apiNote if x.parent is also word, x may has no sibling if x is word; if
 	 *          x.parent is not word, x must have at least one sibling;
 	 */
