@@ -16,15 +16,20 @@ public class TestRemove {
 				"test", "team", "toast", "today" };
 
 		RedblackRadixTrieMap map = new RedblackRadixTrieMap();
+
 		for (String s : arr) {
 			map.put(s, s + " de meanling");
 		}
 
-		map.remove(arr[7]);
-		map.remove(arr[6]);
-		map.remove(arr[5]);
-		map.remove(arr[4]);
-		map.remove(arr[3]);
+		for (int i = arr.length - 1; i >= 0; i--) {
+			try {
+				map.remove(arr[i]);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println(arr[i]);
+			}
+		}
+
 		System.out.println(map.size());
 
 		System.out.println();
@@ -32,6 +37,14 @@ public class TestRemove {
 			String info = map.get(s);
 			System.out.println(info);
 		}
-
+		
+		for (int i = arr.length - 1; i >= 0; i--) {
+			try {
+				map.remove(arr[i]);
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println(arr[i]);
+			}
+		}
 	}
 }
